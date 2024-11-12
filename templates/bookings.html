@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список бронирований</title>
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/booking_style.css') }}">
+</head>
+<body>
+    <h1>Список бронирований</h1>
+
+
+
+    <!-- Форма выбора даты и мастера -->
+    <form method="get" action="{{ url_for('bookings') }}">
+        <label for="date">Выберите дату:</label>
+        <input type="date" id="date" name="date" value="{{ date }}">
+        <label for="master_id">Выберите мастера:</label>
+        <select id="master_id" name="master_id">
+            <option value="">Все мастера</option>
+            {% for master in masters %}
+                <option value="{{ master.id }}" {% if master_id == master.id %}selected{% endif %}>{{ master.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Показать</button>
+    </form>
+
+    <!-- Таблица с бронированиями -->
+    <table>
+        <thead>
+            <tr>
+                <th>Клиент</th>
+                <th>Услуга</th>
+                <th>Начало</th>
+                <th>Конец</th>
+                <th>Продолжительность</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.title }}</td>
+                <td>{{ booking.service }}</td>
+                <td>{{ booking.start }}</td>
+                <td>{{ booking.end }}</td>
+                <td>{{ booking.duration }}</td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+        <button onclick="window.location.href='{{ url_for('index') }}'" class="back-button">Назад</button>
+
+    </table>
+</body>
+</html>

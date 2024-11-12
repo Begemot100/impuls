@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Онлайн Запись</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/booking_form.css') }}">
+</head>
+<body>
+    <div class="booking-container">
+        <h1>Онлайн Запись</h1>
+
+        <!-- Поле для ввода имени клиента -->
+        <div class="form-group">
+            <label for="client_name">Введите имя клиента:</label>
+            <input type="text" id="client_name" name="client_name" placeholder="Введите ваше имя">
+        </div>
+
+        <!-- Выбор услуги -->
+        <div class="form-group">
+            <label for="procedure">Выберите услугу:</label>
+            <select id="procedure" name="procedure">
+                <option value="" disabled selected>Выберите услугу</option>
+                {% for procedure in procedures %}
+                    <option value="{{ procedure.id }}">{{ procedure.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Выбор доктора -->
+        <div class="form-group">
+            <label for="doctor">Выберите доктора:</label>
+            <select id="doctor" name="doctor">
+                <option value="" disabled selected>Выберите доктора</option>
+                {% for doctor in doctors %}
+                    <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Выбор даты -->
+        <div class="form-group">
+            <label for="date">Выберите дату:</label>
+            <input type="date" id="date" name="date">
+            <button type="button" onclick="getAvailableSlots()">Показать свободные слоты</button>
+        </div>
+
+        <!-- Свободные слоты -->
+        <div class="slots-container">
+            <h2>Свободные слоты:</h2>
+            <div id="slots">
+                <!-- Слоты будут добавляться здесь -->
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/booking.js') }}"></script>
+</body>
+</html>

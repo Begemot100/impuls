@@ -1,0 +1,286 @@
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #1a1d28;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    height: 100vh; /* Растягиваем sidebar на всю высоту */
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1; /* Делаем меню гибким, чтобы заполнить высоту */
+}
+
+.sidebar-menu li {
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+.sidebar-menu li:hover {
+    background-color: #33384a;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto; /* Добавляем прокрутку, если контент превышает высоту экрана */
+    margin-top: 20px; /* Поднимаем основной блок */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.btn-add {
+    background-color: #ffbe5b;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-add:hover {
+    background-color: #ffa641;
+}
+
+/* Filter Section */
+.filter-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-section input[type="text"],
+.filter-section select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.btn-search,
+.btn-reset {
+    background-color: #ffbe5b;
+    border: none;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-reset {
+    background-color: #ccc;
+    color: #333;
+}
+
+/* Employee List */
+.employee-list {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.employee-header,
+.employee-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.employee-header {
+    font-weight: bold;
+    background-color: #f8f8f8;
+}
+
+.employee-item span {
+    flex: 1;
+}
+
+.employee-item {
+    transition: background-color 0.3s;
+}
+
+.employee-item:hover {
+    background-color: #f9f9f9;
+}
+
+.employee-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.more-options {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Media Query для адаптивности */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        display: none;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    .employee-header,
+    .employee-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 20px; /* Добавьте отступы */
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Добавьте нижнюю границу */
+}
+
+th {
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+td {
+    white-space: nowrap; /* Оставляем содержимое в одну строку */
+}
+
+.employee-item {
+    padding: 10px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.procedure-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.procedure-list th, .procedure-list td {
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.procedure-list th {
+    background-color: #f2f2f2;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    color: #333;
+}
+
+.booking-form {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.booking-form label {
+    font-weight: bold;
+}
+
+.booking-form input, .booking-form select, .booking-form button {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.booking-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.booking-form button:hover {
+    background-color: #45a049;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.order-table th, .order-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.order-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.order-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

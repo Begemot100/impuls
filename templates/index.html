@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Админка - Сотрудники</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal_styles.css') }}">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>impuls</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="{{ url_for('employees') }}">Сотрудники</a></li>
+            <li><a href="{{ url_for('procedures') }}">Процедуры</a></li>
+            <li><a href="{{ url_for('book') }}">Онлайн запись</a></li>
+            <li><a href="{{ url_for('bookings') }}">Записи</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header>
+            <h1>Сотрудники</h1>
+            <button class="btn-add">+ Добавить сотрудника</button>
+        </header>
+
+        <!-- Employees List -->
+        <section class="employee-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Имя</th>
+                        <th>Должность</th>
+                        <th>Телефон</th>
+                        <th>Email</th>
+                        <th>Процедуры</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employees %}
+                    <tr>
+                        <td>{{ employee.id }}</td>
+                        <td>{{ employee.name }}</td>
+                        <td>{{ employee.position }}</td>
+                        <td>{{ employee.phone }}</td>
+                        <td>{{ employee.email }}</td>
+                        <td>
+                            <!-- Отображаем список процедур сотрудника -->
+                            {% if employee.procedures %}
+                                <ul>
+                                    {% for procedure in employee.procedures %}
+                                        <li>{{ procedure.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <span>Процедуры не назначены</span>
+                            {% endif %}
+                            <!-- Кнопка для редактирования процедур -->
+                            <button onclick="openProcedureModal({{ employee.id }})">Редактировать процедуры</button>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6">Нет сотрудников для отображения</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Модальное окно для выбора процедур -->
+    <div class="modal" id="procedureModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProcedureModal()">&times;</span>
+            <h2>Выберите процедуры для доктора</h2>
+            <form id="procedureForm">
+                <div id="procedureList">
+                    {% for procedure in procedures %}
+                    <label>
+                        <input type="checkbox" name="procedures" value="{{ procedure.id }}">
+                        {{ procedure.name }}
+                    </label><br>
+                    {% endfor %}
+                </div>
+                <button type="button" onclick="saveProcedures()">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/modal_script.js') }}"></script>
+</body>
+</html>
