@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impuls Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Impuls Admin Panel</h1>
+
+        <!-- Section: Add Master -->
+        <div class="form-container">
+            <h2>Add Master</h2>
+            <form id="master-form">
+                <input type="text" id="master-name" placeholder="Master Name" required>
+                <button type="button" onclick="addMaster()">Add Master</button>
+            </form>
+        </div>
+
+        <!-- Section: Add Procedure -->
+        <div class="form-container">
+            <h2>Add Procedure</h2>
+            <form id="procedure-form">
+                <input type="text" id="procedure-name" placeholder="Procedure Name" required>
+                <input type="number" id="procedure-duration" placeholder="Duration (minutes)" required>
+                <input type="number" id="procedure-price" placeholder="Price (€)" required>
+                <select id="procedure-master">
+                    {% for master in masters %}
+                        <option value="{{ master.id }}">{{ master.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="button" onclick="addProcedure()">Add Procedure</button>
+            </form>
+        </div>
+
+        <!-- Section: Display Masters and Procedures -->
+        <div class="list-container">
+            <h2>Masters</h2>
+            <ul id="master-list">
+                {% for master in masters %}
+                <li>
+                    <span>{{ master.id }} - {{ master.name }}</span>
+                    <button onclick="editMaster({{ master.id }}, '{{ master.name }}')">Edit</button>
+                    <button onclick="deleteMaster({{ master.id }})">Delete</button>
+                </li>
+                {% endfor %}
+            </ul>
+
+
+
+            <h2>Procedures</h2>
+            <ul id="procedure-list">
+                {% for procedure in procedures %}
+                <li>
+                    <span>{{ procedure.name }} ({{ procedure.duration }} min) - {{ procedure.price }} €</span>
+                    <button onclick="editProcedure({{ procedure.id }}, '{{ procedure.name }}', {{ procedure.duration }}, {{ procedure.price }}, {{ procedure.master_id }})">Edit</button>
+                    <button onclick="deleteProcedure({{ procedure.id }})">Delete</button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
