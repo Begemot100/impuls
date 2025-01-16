@@ -9,7 +9,6 @@ from models.booking import Booking
 import logging
 
 
-API_KEY = '35fdd66e-7f4e-4281-81ae-2a0411344a9e'
 BASE_URL = 'https://fotona.crmexpert.md'
 
 
