@@ -1,8 +1,7 @@
-from models.employee import Employee  # Путь к модели Employee
-from models import db  # Путь к экземпляру db из модуля models
+from models.employee import Employee  
+from models import db  
 from app import create_app
 
-# Данные для добавления сотрудников
 employees_data = [
     {"id": 3079, "name": "Martsyniak Daria"},
     {"id": 2963, "name": "Viacheslav BCN"},
@@ -15,7 +14,6 @@ employees_data = [
 
 app = create_app()
 
-# Добавление сотрудников в базу данных
 with app.app_context():
     for employee_data in employees_data:
         employee = Employee(id=employee_data["id"], name=employee_data["name"])
