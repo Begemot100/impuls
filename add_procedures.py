@@ -1,4 +1,4 @@
-from app import db, create_app  # Ensure you import create_app if it's defined
+from app import db, create_app  
 from models.procedure import Procedure
 
 app = create_app()
@@ -46,7 +46,6 @@ procedures_data = [
     {"name": "Aclaración de la pigmentación facial", "category": "SW", "duration": "40 min"},
     {"name": "Tratamiento de cicatrices hiperpigmentadas", "category": "SP", "duration": "30 min"},
     {"name": "Dermapen", "category": "SW", "duration": "30 min"},
-    # Add additional procedures as necessary
 ]
 
 with app.app_context():
