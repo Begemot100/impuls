@@ -26,7 +26,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-top: 20px;
-    height: 100vh; /* Растягиваем sidebar на всю высоту */
+    height: 100vh; 
 }
 
 .sidebar-header {
@@ -39,7 +39,7 @@ body {
 .sidebar-menu {
     list-style: none;
     padding: 0;
-    flex-grow: 1; /* Делаем меню гибким, чтобы заполнить высоту */
+    flex-grow: 1; 
 }
 
 .sidebar-menu li {
@@ -55,8 +55,8 @@ body {
 .main-content {
     flex: 1;
     padding: 20px;
-    overflow-y: auto; /* Добавляем прокрутку, если контент превышает высоту экрана */
-    margin-top: 20px; /* Поднимаем основной блок */
+    overflow-y: auto; 
+    margin-top: 20px; 
 }
 
 header {
@@ -190,9 +190,9 @@ table {
 }
 
 th, td {
-    padding: 12px 20px; /* Добавьте отступы */
+    padding: 12px 20px; 
     text-align: left;
-    border-bottom: 1px solid #ddd; /* Добавьте нижнюю границу */
+    border-bottom: 1px solid #ddd; 
 }
 
 th {
@@ -201,7 +201,7 @@ th {
 }
 
 td {
-    white-space: nowrap; /* Оставляем содержимое в одну строку */
+    white-space: nowrap; 
 }
 
 .employee-item {
