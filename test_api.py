@@ -1,7 +1,6 @@
 from datetime import datetime
 from services.crm_sync import get_master_orders
 
-# Список исполнителей с ID
 executors = {
     3079: "Martsyniak Daria",
     2963: "Viacheslav BCN",
@@ -12,10 +11,8 @@ executors = {
     3084: "Yulia Estetica"
 }
 
-# Текущая дата
-date = "2024-11-04"  # Установите желаемую дату
+date = "2024-11-04"  
 
-# Получение заказов для каждого исполнителя
 for master_id, name in executors.items():
     try:
         orders = get_master_orders(master_id, date)
