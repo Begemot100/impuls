@@ -10,4 +10,3 @@ class Schedule(db.Model):
     end_time = db.Column(db.DateTime, nullable=False)
 
     employee = db.relationship('Employee', backref=db.backref('schedules', lazy=True))
-    # Добавьте дополнительные поля для расписания
