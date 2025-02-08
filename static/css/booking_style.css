@@ -57,7 +57,7 @@ th {
 }
 
 td {
-    max-width: 200px; /* Ограничение ширины для колонки "Услуга" */
+    max-width: 200px; 
     text-overflow: ellipsis;
     overflow: hidden;
 }
